@@ -15,9 +15,18 @@ class Program
         myDictionary.Add("Apple", 5);
         myDictionary.Add("Banana", 10);
         myDictionary.Add("Cherry", 15);
+        myDictionary.Add("Grapes", 20);
+        myDictionary.Add("Orange", 25);
+        myDictionary.Add("Pineapple", 30);
+        myDictionary.Add("Mango", 35);
+        myDictionary.Add("Peach", 40);
+        myDictionary.Add("Watermelon", 45);
 
-        // Kiểm tra xem một khóa có tồn tại trong từ điển hay không
-        string keyToCheck = "Banana";
+        // Nhập từ khóa cần kiểm tra từ người dùng
+        Console.Write("Nhập từ khóa cần kiểm tra: ");
+        string keyToCheck = Console.ReadLine();
+
+        // Kiểm tra xem khóa có tồn tại trong từ điển hay không
         if (myDictionary.ContainsKey(keyToCheck))
         {
             Console.WriteLine($"Khóa '{keyToCheck}' tồn tại trong từ điển.");
@@ -29,16 +38,16 @@ class Program
 
         // Sử dụng phương thức TryGetValue để truy xuất giá trị được liên kết với một khóa nhất định một cách an toàn
         int value;
-        if (myDictionary.TryGetValue("Cherry", out value))
+        if (myDictionary.TryGetValue(keyToCheck, out value))
         {
-            Console.WriteLine($"Giá trị liên kết với khóa 'Cherry' là {value}.");
+            Console.WriteLine($"Giá trị liên kết với khóa '{keyToCheck}' là {value}.");
         }
         else
         {
-            Console.WriteLine("Không tìm thấy khóa 'Cherry' trong từ điển.");
+            Console.WriteLine($"Không tìm thấy khóa '{keyToCheck}' trong từ điển.");
         }
 
-        // Sử dụng vòng lặp foreach để lặp qua các mục KeyValuePair<TKey, TValue> trong từ điển và in chúng
+        // In ra các cặp khóa-giá trị trong từ điển
         Console.WriteLine("Các cặp khóa-giá trị trong từ điển:");
         foreach (KeyValuePair<string, int> kvp in myDictionary)
         {
